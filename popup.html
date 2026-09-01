@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X 私信翻译助手</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      width: 300px;
+      margin: 0;
+      padding: 16px;
+      box-sizing: border-box;
+      font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    h1 { margin: 0 0 12px; font-size: 17px; }
+    .row { margin: 12px 0; }
+    .switch { display: flex; align-items: center; gap: 8px; }
+    label { display: block; margin-bottom: 5px; }
+    select, input[type="range"] { width: 100%; }
+    .hint { margin-top: 12px; font-size: 12px; opacity: 0.72; }
+    #saved { min-height: 20px; margin-top: 8px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>X 私信翻译助手 <small style="font-size:11px;opacity:.62">V0.3</small></h1>
+
+  <div class="row switch">
+    <input id="enabled" type="checkbox">
+    <label for="enabled" style="margin:0">启用扩展</label>
+  </div>
+
+  <div class="row switch">
+    <input id="autoTranslate" type="checkbox">
+    <label for="autoTranslate" style="margin:0">自动把外语私信翻成中文</label>
+  </div>
+
+  <div class="row">
+    <label for="outgoingTarget">中文消息发送前翻译为</label>
+    <select id="outgoingTarget">
+      <option value="en">英语</option>
+      <option value="ja">日语</option>
+      <option value="ko">韩语</option>
+      <option value="es">西班牙语</option>
+      <option value="fr">法语</option>
+      <option value="de">德语</option>
+      <option value="ru">俄语</option>
+      <option value="pt">葡萄牙语</option>
+      <option value="it">意大利语</option>
+      <option value="ar">阿拉伯语</option>
+      <option value="th">泰语</option>
+      <option value="vi">越南语</option>
+      <option value="id">印度尼西亚语</option>
+      <option value="tr">土耳其语</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="confidence">自动识别最低置信度：<span id="confidenceValue"></span></label>
+    <input id="confidence" type="range" min="0.20" max="0.90" step="0.05">
+  </div>
+
+  <div id="saved" aria-live="polite"></div>
+  <div class="hint">只保存设置，不保存私信原文。首次使用请初始化模型。旧消息需先向上滚动加载，再点击“翻译当前已加载消息”。</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
