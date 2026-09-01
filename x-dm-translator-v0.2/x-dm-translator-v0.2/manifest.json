@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "X 私信翻译助手",
+  "version": "0.2.0",
+  "description": "在 Microsoft Edge 中为 X 私信提供本地自动翻译、历史消息重扫和发送前翻译预览。",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+  ],
+  "action": {
+    "default_title": "X 私信翻译助手",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
